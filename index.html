@@ -1,0 +1,634 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SecureBank - Banking Management System</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f2f6fc;
+    color: #243447;
+    line-height: 1.6;
+}
+
+header {
+    background: #102a43;
+    color: white;
+    padding: 18px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+}
+
+.logo span {
+    color: #f4b942;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 10px;
+    border-radius: 5px;
+}
+
+nav a:hover {
+    background: #1769aa;
+}
+
+main {
+    max-width: 1150px;
+    margin: 30px auto;
+    padding: 0 18px;
+    min-height: 65vh;
+}
+
+.page {
+    display: none;
+    background: white;
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px #dce4ee;
+}
+
+#home {
+    display: block;
+}
+
+/* Show the selected page */
+.page:target {
+    display: block;
+}
+
+body:has(.page:target) #home {
+    display: none;
+}
+
+#home:target {
+    display: block;
+}
+
+h1, h2, h3 {
+    color: #102a43;
+    margin-bottom: 15px;
+}
+
+h1 {
+    font-size: 36px;
+}
+
+p {
+    margin-bottom: 15px;
+}
+
+.hero {
+    background: linear-gradient(120deg, #e4f1ff, #ffffff);
+    padding: 45px 30px;
+    border-radius: 12px;
+    border: 1px solid #d9e2ec;
+}
+
+.hero h1 span {
+    color: #1769aa;
+}
+
+.btn {
+    display: inline-block;
+    background: #1769aa;
+    color: white;
+    padding: 11px 18px;
+    border: none;
+    border-radius: 6px;
+    text-decoration: none;
+    margin: 8px 5px 8px 0;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.btn:hover {
+    background: #102a43;
+}
+
+.gold {
+    background: #f4b942;
+    color: #102a43;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 18px;
+    margin-top: 25px;
+}
+
+.card {
+    background: white;
+    border: 1px solid #d9e2ec;
+    padding: 22px;
+    border-radius: 10px;
+}
+
+.card p {
+    color: #627d98;
+}
+
+.icon {
+    font-size: 30px;
+}
+
+form {
+    max-width: 600px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin: 12px 0 5px;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #bcccdc;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+textarea {
+    min-height: 110px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+th, td {
+    border: 1px solid #bcccdc;
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background: #102a43;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background: #f2f6fc;
+}
+
+.notice {
+    background: #fff5d6;
+    border-left: 4px solid #f4b942;
+    padding: 14px;
+    margin: 20px 0;
+}
+
+footer {
+    text-align: center;
+    background: #102a43;
+    color: white;
+    padding: 25px;
+    margin-top: 30px;
+}
+
+footer p {
+    margin: 5px;
+}
+
+@media (max-width: 700px) {
+    header {
+        align-items: flex-start;
+    }
+
+    nav a {
+        font-size: 13px;
+        padding: 6px;
+    }
+
+    .page {
+        padding: 22px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    .hero {
+        padding: 25px 18px;
+    }
+
+    table {
+        font-size: 13px;
+    }
+
+    th, td {
+        padding: 7px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <a href="#home" class="logo">Secure<span>Bank</span></a>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#login">Login</a>
+        <a href="#register">Open Account</a>
+        <a href="#dashboard">Dashboard</a>
+        <a href="#accounts">Accounts</a>
+        <a href="#transactions">Transactions</a>
+        <a href="#loans">Loans</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<main>
+
+<!-- 1. HOME PAGE -->
+<section class="page" id="home">
+    <div class="hero">
+        <h3>WELCOME TO SECUREBANK</h3>
+        <h1>Banking Made <span>Simple and Secure</span></h1>
+        <p>
+            Experience a modern banking website with easy navigation,
+            account information and banking service details.
+        </p>
+        <a href="#register" class="btn">Open an Account</a>
+        <a href="#services" class="btn gold">Explore Services</a>
+    </div>
+
+    <div class="grid">
+        <div class="card">
+            <div class="icon">🔒</div>
+            <h3>Secure Banking</h3>
+            <p>A clean interface designed around safe banking practices.</p>
+        </div>
+        <div class="card">
+            <div class="icon">💳</div>
+            <h3>Account Management</h3>
+            <p>Explore account and transaction information.</p>
+        </div>
+        <div class="card">
+            <div class="icon">📱</div>
+            <h3>Easy Access</h3>
+            <p>A responsive layout for different screen sizes.</p>
+        </div>
+    </div>
+</section>
+
+<!-- 2. ABOUT PAGE -->
+<section class="page" id="about">
+    <h1>About SecureBank</h1>
+    <p>
+        SecureBank is a Banking Management System website prototype
+        developed using HTML5 and CSS3. It demonstrates how banking
+        information can be organized into clear, interconnected sections.
+    </p>
+
+    <div class="grid">
+        <div class="card">
+            <h3>Our Aim</h3>
+            <p>Provide a simple and user-friendly banking interface.</p>
+        </div>
+        <div class="card">
+            <h3>Our Vision</h3>
+            <p>Make banking-related information easy to explore.</p>
+        </div>
+        <div class="card">
+            <h3>Our Technology</h3>
+            <p>HTML5 for page structure and CSS3 for styling.</p>
+        </div>
+    </div>
+
+    <div class="notice">
+        This is a student project, not a real banking service.
+    </div>
+</section>
+
+<!-- 3. LOGIN PAGE -->
+<section class="page" id="login">
+    <h1>Customer Login</h1>
+    <p>Enter sample details to preview the login form.</p>
+
+    <form action="#login">
+        <label for="customer">Customer ID or Email</label>
+        <input id="customer" type="text"
+               placeholder="Enter customer ID or email" required>
+
+        <label for="password">Password</label>
+        <input id="password" type="password"
+               placeholder="Enter password" required>
+
+        <button class="btn" type="submit">Login</button>
+    </form>
+
+    <p>New customer? <a href="#register">Open an account</a>.</p>
+
+    <div class="notice">
+        Demonstration only: this form does not authenticate users.
+    </div>
+</section>
+
+<!-- 4. REGISTRATION PAGE -->
+<section class="page" id="register">
+    <h1>Open an Account</h1>
+    <p>Fill in the sample form below.</p>
+
+    <form action="#register">
+        <label for="fullname">Full Name</label>
+        <input id="fullname" type="text"
+               placeholder="Enter your full name" required>
+
+        <label for="email">Email Address</label>
+        <input id="email" type="email"
+               placeholder="Enter your email" required>
+
+        <label for="phone">Phone Number</label>
+        <input id="phone" type="tel"
+               placeholder="Enter your phone number" required>
+
+        <label for="type">Account Type</label>
+        <select id="type" required>
+            <option value="">Select account type</option>
+            <option>Savings Account</option>
+            <option>Current Account</option>
+            <option>Student Account</option>
+        </select>
+
+        <label for="city">City</label>
+        <input id="city" type="text" placeholder="Enter your city" required>
+
+        <button class="btn" type="submit">Submit Registration</button>
+    </form>
+
+    <div class="notice">
+        Do not enter real personal information. This form does not save data.
+    </div>
+</section>
+
+<!-- 5. DASHBOARD PAGE -->
+<section class="page" id="dashboard">
+    <h1>Customer Dashboard</h1>
+    <p>Sample banking overview.</p>
+
+    <div class="grid">
+        <div class="card">
+            <h3>Sample Balance</h3>
+            <h2>₹25,000.00</h2>
+            <p>Illustrative amount only</p>
+        </div>
+        <div class="card">
+            <h3>Account Type</h3>
+            <h2>Savings</h2>
+            <p>Sample account</p>
+        </div>
+        <div class="card">
+            <h3>Account Status</h3>
+            <h2>Demo</h2>
+            <p>Not a real bank account</p>
+        </div>
+    </div>
+
+    <h2 style="margin-top:25px;">Quick Actions</h2>
+    <a href="#accounts" class="btn">View Accounts</a>
+    <a href="#transactions" class="btn">Transactions</a>
+    <a href="#loans" class="btn gold">Explore Loans</a>
+</section>
+
+<!-- 6. ACCOUNTS PAGE -->
+<section class="page" id="accounts">
+    <h1>My Accounts</h1>
+    <p>Example account details.</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Account Number</th>
+                <th>Account Type</th>
+                <th>Branch</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>XXXXXX1024</td>
+                <td>Savings</td>
+                <td>Vijayawada</td>
+                <td>Demo</td>
+            </tr>
+            <tr>
+                <td>XXXXXX2048</td>
+                <td>Current</td>
+                <td>Vijayawada</td>
+                <td>Demo</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="notice">
+        These are fictional records for the project demonstration.
+    </div>
+</section>
+
+<!-- 7. TRANSACTIONS PAGE -->
+<section class="page" id="transactions">
+    <h1>Transaction History</h1>
+    <p>Sample transaction records.</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Description</th>
+                <th>Type</th>
+                <th>Amount</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>20-Oct-2026</td>
+                <td>Sample Deposit</td>
+                <td>Credit</td>
+                <td>₹5,000</td>
+                <td>Demo</td>
+            </tr>
+            <tr>
+                <td>18-Oct-2026</td>
+                <td>Sample Purchase</td>
+                <td>Debit</td>
+                <td>₹1,200</td>
+                <td>Demo</td>
+            </tr>
+            <tr>
+                <td>15-Oct-2026</td>
+                <td>Sample Transfer</td>
+                <td>Debit</td>
+                <td>₹800</td>
+                <td>Demo</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="notice">
+        No money is transferred. This page only displays sample information.
+    </div>
+</section>
+
+<!-- 8. LOANS PAGE -->
+<section class="page" id="loans">
+    <h1>Loan Services</h1>
+    <p>Explore common types of loans.</p>
+
+    <div class="grid">
+        <div class="card">
+            <div class="icon">🏠</div>
+            <h3>Home Loan</h3>
+            <p>Financial support for eligible home purchases or construction.</p>
+            <a href="#contact" class="btn">Enquire</a>
+        </div>
+        <div class="card">
+            <div class="icon">🎓</div>
+            <h3>Education Loan</h3>
+            <p>Financial support for approved education expenses.</p>
+            <a href="#contact" class="btn">Enquire</a>
+        </div>
+        <div class="card">
+            <div class="icon">🚗</div>
+            <h3>Vehicle Loan</h3>
+            <p>A loan category for eligible vehicle buyers.</p>
+            <a href="#contact" class="btn">Enquire</a>
+        </div>
+        <div class="card">
+            <div class="icon">💼</div>
+            <h3>Personal Loan</h3>
+            <p>A general-purpose loan subject to lender eligibility.</p>
+            <a href="#contact" class="btn">Enquire</a>
+        </div>
+    </div>
+</section>
+
+<!-- 9. SERVICES PAGE -->
+<section class="page" id="services">
+    <h1>Banking Services</h1>
+    <p>Explore common banking service categories.</p>
+
+    <div class="grid">
+        <div class="card">
+            <div class="icon">💸</div>
+            <h3>Fund Transfers</h3>
+            <p>Information about transferring money between accounts.</p>
+        </div>
+        <div class="card">
+            <div class="icon">🧾</div>
+            <h3>Bill Payments</h3>
+            <p>Information about utility and service bill payments.</p>
+        </div>
+        <div class="card">
+            <div class="icon">💳</div>
+            <h3>Cards</h3>
+            <p>Information about debit and credit card services.</p>
+        </div>
+        <div class="card">
+            <div class="icon">📄</div>
+            <h3>Statements</h3>
+            <p>Example account statement information.</p>
+        </div>
+        <div class="card">
+            <div class="icon">📞</div>
+            <h3>Customer Support</h3>
+            <p>Find contact information and support options.</p>
+        </div>
+        <div class="card">
+            <div class="icon">🌐</div>
+            <h3>Online Banking</h3>
+            <p>Explore online banking service information.</p>
+        </div>
+    </div>
+
+    <a href="#contact" class="btn">Contact Us</a>
+</section>
+
+<!-- 10. CONTACT PAGE -->
+<section class="page" id="contact">
+    <h1>Contact Us</h1>
+    <p>Use this sample form to preview the contact page.</p>
+
+    <div class="grid">
+        <div class="card">
+            <h3>Address</h3>
+            <p>SecureBank Demo Office<br>Vijayawada, Andhra Pradesh</p>
+        </div>
+        <div class="card">
+            <h3>Email</h3>
+            <p>support@example.com</p>
+        </div>
+        <div class="card">
+            <h3>Working Hours</h3>
+            <p>Monday–Friday<br>9:00 AM – 5:00 PM</p>
+        </div>
+    </div>
+
+    <form action="#contact">
+        <label for="contactname">Your Name</label>
+        <input id="contactname" type="text"
+               placeholder="Enter your name" required>
+
+        <label for="contactemail">Email Address</label>
+        <input id="contactemail" type="email"
+               placeholder="Enter your email" required>
+
+        <label for="message">Message</label>
+        <textarea id="message"
+                  placeholder="Write your message" required></textarea>
+
+        <button class="btn" type="submit">Submit Message</button>
+    </form>
+
+    <div class="notice">
+        This form does not send messages because no back-end is connected.
+    </div>
+</section>
+
+</main>
+
+<footer>
+    <h3 style="color:white;">SecureBank - Banking Management System</h3>
+    <p>Developed using HTML5 and CSS3</p>
+    <p>Educational front-end prototype only.</p>
+    <a href="#home" style="color:#f4b942;">Back to Home ↑</a>
+</footer>
+
+</body>
+</html>
